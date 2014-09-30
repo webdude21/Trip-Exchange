@@ -1,0 +1,43 @@
+<div class="container" ng-controller="RegisterController">
+    <div class="well">
+        <form name="signUpForm" class="form-horizontal">
+            <fieldset>
+                <legend>Create New User</legend>
+                <div class="form-group"><label for="email" class="col-md-2 control-label">E-mail</label>
+
+                    <div class="col-md-10"><input id="email" type="text" placeholder="E-mail" ng-model="user.email"
+                                                  required="required"
+                                                  ng-pattern="/\b[A-Z0-9._%+']+@(?:[A-Z0-9-]+\.)+[\w]{2,6}\b/i" class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="password" class="col-md-2 control-label">Password</label>
+
+                    <div class="col-md-10">
+                        <input id="password" type="password" placeholder="Password" ng-model="user.password"
+                               required="required" ng-pattern="/^[\w\W\s]{4,100}$/" class="form-control"/>
+                    </div>
+                </div>
+
+                <div class="form-group"><label for="confirmation" class="col-md-2 control-label">Confirm Password</label>
+
+                    <div class="col-md-10"><input id="confirmation" type="password" placeholder="Username" ng-model="user.confirmPassword"
+                                                  required="required" ng-pattern="/^[\w\W\s]{4,100}$/" class="form-control"/></div>
+                </div>
+                <div class="form-group"><label for="is-driver-checkbox" class="col-md-2 control-label">Are you the driver?</label>
+
+                    <div class="col-md-10"><input id="is-driver-checkbox" type="checkbox" ng-model="user.isDriver"
+                                                  class="form-control"/></div>
+                </div>
+                <div class="form-group" ng-show="user.isDriver"><label for="car-model" class="col-md-2 control-label">Car Model</label>
+
+                    <div class="col-md-10"><input id="car-model" ng-required="user.isDriver" type="text" ng-model="user.car" class="form-control"/></div>
+                </div>
+                <div class="pull-right">
+                    <button ng-click="register(user)" ng-disabled="signUpForm.$invalid" class="btn btn-primary">
+                        Create
+                    </button>
+                    <a href="#/" class="btn btn-primary">Cancel</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

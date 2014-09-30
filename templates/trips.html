@@ -1,0 +1,73 @@
+<div class="container" ng-controller="TripsController">
+    <h1 class="text-center">Trips</h1>
+    <div id="private-parts" ng-show="isAuthenticated">
+        <label>Sort
+            <select ng-model="query.orderBy">
+                <option selected="selected" value="driver">Driver</option>
+                <option value="date">Date</option>
+                <option value="seats">Seats</option>
+            </select>
+        </label>
+        <label>Order
+            <select ng-model="query.orderType">
+                <option selected="selected" value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+            </select>
+        </label>
+        <label>From
+            <select ng-model="query.from">
+                <option ng-repeat="city in cities" value="{{cities[$index]}}">{{cities[$index]}}</option>
+            </select>
+        </label>
+        <label>To
+            <select ng-model="query.to">
+                <option ng-repeat="city in cities" value="{{cities[$index]}}">{{cities[$index]}}</option>
+            </select>
+        </label>
+        <label for="pager">Page:</label>
+        <input id="pager" type="number" value="1" ng-model="query.page"/>
+        <label>Include finished
+            <input ng-model="query.finished" type="checkbox">
+        </label>
+        <label>Only Mine
+            <input ng-model="query.onlyMine" type="checkbox">
+        </label>
+        <a href="" ng-click="userFilter(query)" class="btn btn-primary">Filter</a>
+        <a href="" ng-click="clearFilters()" class="btn btn-primary">Reset</a>
+        <a href="#/trips/create" class="btn btn-primary">Create</a>
+    </div>
+    <div class="well row">
+        <div class="panel panel-info col-lg-12">
+            <table class="table table-striped text-center table-hover">
+                <thead>
+                <tr class="info">
+                    <th class="text-center vcenter">
+                        Driver
+                    </th>
+                    <th class="text-center vcenter">
+                        From
+                    </th>
+                    <th class="text-center vcenter">
+                        To
+                    </th>
+                    <th class="text-center vcenter">
+                        Departure time
+                    </th>
+                    <th class="text-center vcenter" ng-show="isAuthenticated">
+                        Is mine
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="trip in trips">
+                    <td><a href="#/drivers/{{trip.driverId}}">{{trip.driverName}}</a></td>
+                    <td>{{trip.from}}</td>
+                    <td>{{trip.to}}</td>
+                    <td><a href="#/trips/{{trip.id}}">{{trip.departureDate}}</a></td>
+                    <td class="text-center vcenter" ng-show="isAuthenticated">{{trip.isMine}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

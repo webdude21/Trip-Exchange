@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Trip Exchange</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//bootswatch.com/slate/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="styles/trip-exchange.css">
+</head>
+<body ng-app="tripExchange" ng-controller="PageController" ng-cloak>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#/home" class="navbar-brand">Trip Exchange</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/trips">Trips</a>
+                </li>
+                <li>
+                    <a href="#/drivers">Drivers</a>
+                </li>
+            </ul>
+            <div ng-controller="LoginController" class="nav navbar-nav navbar-right">
+                <form ng-hide="identity.isAuthenticated()" class="navbar-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Username" ng-model="user.username" class="form-control"/>
+                        <input type="password" placeholder="Password" ng-model="user.password" class="form-control"/>
+                    </div>
+                    <button ng-click="login(user)" class="btn btn-primary">Login</button>
+                    <a href="#/register" class="btn btn-primary">Register</a></form>
+                <ul ng-show="identity.isAuthenticated()" class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" class="dropdown-toggle">{{identity.getCurrentUser().userName }}
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" ng-click="logout()">Sign Out</a></li>
+                        </ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-view class="container" ng-cloak>
+</div>
+<hr>
+<div class="center-block" id="message-box"></div>
+<div class="panel-footer text-center">Created by {{author}}</div>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-resource.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="scripts/trip-excahnge-app.js"></script>
+<script src="scripts/services/resources/drivers-resource.js"></script>
+<script src="scripts/services/resources/stats-resource.js"></script>
+<script src="scripts/services/resources/trips-resource.js"></script>
+<script src="scripts/services/resources/cities-resource.js"></script>
+<script src="scripts/services/account/auth.js"></script>
+<script src="scripts/services/account/authorization.js"></script>
+<script src="scripts/services/account/identity.js"></script>
+<script src="scripts/services/notifier.js"></script>
+<script src="scripts/controllers/directives/driver-table.js"></script>
+<script src="scripts/controllers/directives/pager-directive.js"></script>
+<script src="scripts/controllers/page-controller.js"></script>
+<script src="scripts/controllers/login-controller.js"></script>
+<script src="scripts/controllers/register-controller.js"></script>
+<script src="scripts/controllers/drivers-controller.js"></script>
+<script src="scripts/controllers/trips-controller.js"></script>
+<script src="scripts/controllers/home-page-controller.js"></script>
+<script src="scripts/controllers/trip-create-controller.js"></script>
+<script src="scripts/controllers/trip-detail-controller.js"></script>
+<script src="scripts/controllers/driver-details-controller.js"></script>
+</body>
+</html>

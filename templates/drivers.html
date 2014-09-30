@@ -1,0 +1,15 @@
+<div class="container" ng-controller="DriversController">
+    <h1 class="text-center">Drivers</h1>
+    <div id="private-parts" ng-show="isAuthenticated()">
+        <pager></pager>
+        <label for="filter">Filter: <input id="filter" type="text" placeholder="Ivo" ng-model="nameFilter"
+                                          required="required"
+                                          class="form-control"/></label>
+        <a href="" ng-click="userFilter(nameFilter, page)" class="btn btn-primary">Filter</a>
+    </div>
+    <div class="panel panel-info col-lg-12">
+        <div class="panel-body ">
+            <driver-table></driver-table>
+        </div>
+    </div>
+</div>

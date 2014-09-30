@@ -1,0 +1,13 @@
+<div class="container" ng-controller="TripDetailController">
+    <a href="" ng-click="joinTrip()" class="btn btn-primary">Join</a>
+<h1>{{trip.driverName}} - {{trip.departureDate}}</h1>
+    <span>From: {{trip.from}}</span>
+    <span>To: {{trip.to}}</span>
+    <span>Number of Free Seats: {{trip.numberOfFreeSeats}}</span>
+    <p>Passengers</p>
+    <ul>
+       <li ng-repeat="passanger in trip.passengers">
+           {{trip.passengers[$index]}}
+       </li>
+    </ul>
+</div>

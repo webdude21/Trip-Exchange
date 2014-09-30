@@ -1,0 +1,79 @@
+<div ng-controller="HomePageController">
+    <div class="jumbotron">
+        <H1 class="text-center">Welcome to Trip Exchange</H1>
+        <H2 class="text-center">Find your way home</H2>
+    </div>
+    <div class="container clearfix col-lg-12">
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr class="info">
+                    <th class="text-center vcenter">
+                        <span>Trips</span>
+                    </th>
+                    <th class="text-center vcenter">
+                        <span>Finished trips</span>
+                    </th>
+                    <th class="text-center vcenter">
+                        <span>Users</span>
+                    </th>
+                    <th class="text-center vcenter">
+                        <span>Drivers</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="text-center">
+                    <td>{{stats.trips}}</td>
+                    <td>{{stats.finishedTrips}}</td>
+                    <td>{{stats.users}}</td>
+                    <td>{{stats.drivers}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-info col-lg-6">
+            <div class="panel-heading">
+                <h3 class="panel-title">Latest trips</h3>
+            </div>
+            <div class="panel-body ">
+                <table class="table table-striped text-center table-hover">
+                    <thead>
+                    <tr class="info">
+                        <th class="text-center vcenter">
+                            Driver
+                        </th>
+                        <th class="text-center vcenter">
+                            From
+                        </th>
+                        <th class="text-center vcenter">
+                            To
+                        </th>
+                        <th class="text-center vcenter">
+                            Departure time
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="trip in trips">
+                        <td><a href="#/drivers/{{trip.driverId}}">{{trip.driverName}}</a></td>
+                        <td>{{trip.from}}</td>
+                        <td>{{trip.to}}</td>
+                        <td>{{trip.departureDate}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-info col-lg-6">
+            <div class="panel-heading">
+                <h3 class="panel-title">Latest Drivers</h3>
+            </div>
+            <div class="panel-body ">
+                <driver-table></driver-table>
+            </div>
+        </div>
+    </div>
+</div>
